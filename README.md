@@ -1,15 +1,15 @@
 # Async Queue 
 
-The app add tasks to queue and process it asynchronously. You can change configs in src/main/resources/application-prod.properties:
-tasks-count - tasks that can be process in the same time
-isAsync - tasks process one by one or simultaneously (the same as tasks-count=1)
+The app adds tasks to queue and processes it asynchronously. You can change configs in src/main/resources/application-prod.properties:
+- tasks-count - tasks that can be process in the same time
+- isAsync - tasks process one by one or simultaneously (the same as tasks-count=1)
 
 Yet you can see how it works when start many tasks simultaneously in TaskManagerIntegrationTest or test API in CheckFactorialIntegrationTest  
 
 Used technology:
-Spark - for handle web requests,
-Guice - for dependency injection,
-Jackson - for parse request body
+- Spark - for handle web requests,
+- Guice - for dependency injection,
+- Jackson - for parse request body
 
 ## How to start it?
 
