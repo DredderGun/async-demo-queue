@@ -16,7 +16,7 @@ public class ApiClientTester {
     protected final ObjectMapper mapper = new ObjectMapper();
 
     public String checkTask(String url, String id) throws Exception {
-        var request = HttpRequest.newBuilder(new URI(url))
+        HttpRequest request = HttpRequest.newBuilder(new URI(url))
                 .POST(HttpRequest.BodyPublishers.ofString(id))
                 .build();
 
@@ -25,7 +25,7 @@ public class ApiClientTester {
     }
 
     public boolean computeFactorial(String url, String n) throws Exception {
-        var request = HttpRequest.newBuilder(new URI(url))
+        HttpRequest request = HttpRequest.newBuilder(new URI(url))
                 .POST(HttpRequest.BodyPublishers.ofString(n))
                 .build();
 

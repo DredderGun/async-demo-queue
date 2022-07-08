@@ -35,9 +35,10 @@ public class TaskManagerIntegrationTest {
         TaskManager taskManager = Main.globalInjector.getInstance(TaskManager.class);
         CustomThreadPoolExecutor threadPoolExecutor = Main.globalInjector.getInstance(CustomThreadPoolExecutor.class);
 
-        final var parallelRequestsCount = 20;
+        final int parallelRequestsCount = 20;
+        int maxSecondsForWait = 80; // max seconds for waiting tasks complete
         final List<Callable<Boolean>> requests = new ArrayList<>();
-        final var executorService = Executors.newCachedThreadPool();
+        final ExecutorService executorService = Executors.newCachedThreadPool();
 
         for (int i = 0; i < parallelRequestsCount; i++) {
             final int currNmbr = i;
@@ -56,7 +57,7 @@ public class TaskManagerIntegrationTest {
         LocalDateTime startTime = LocalDateTime.now();
         while (
                 threadPoolExecutor.getCompletedTaskCount() != parallelRequestsCount + 1 &&
-                LocalDateTime.now().isBefore(startTime.plusSeconds(50)) // break loop if it froze
+                LocalDateTime.now().isBefore(startTime.plusSeconds(maxSecondsForWait)) // break loop if it froze
         ) { }
 
         // check results

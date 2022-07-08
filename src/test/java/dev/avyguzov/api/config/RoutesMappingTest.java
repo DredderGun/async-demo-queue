@@ -31,8 +31,8 @@ public class RoutesMappingTest {
 
     @Test
     public void routesMappingMustInitMyRoutesWithHandlerPathAnnotation() {
-        var getRoute = new MyGetRoute();
-        var postRoute = new MyPostRoute();
+        MyGetRoute getRoute = new MyGetRoute();
+        MyPostRoute postRoute = new MyPostRoute();
 
         new RoutesMapper(registrant, Set.of(getRoute, postRoute));
 
